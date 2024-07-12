@@ -23,7 +23,7 @@
                 </Avatar.Fallback>
                 <div class="absolute bottom-0 right-0 bg-white rounded-full p-2" on:click={imageChange}>
                     <ImageUp class="h-5 w-5" />
-                </div>    
+                </div>
 			</Avatar.Root>
 		</div>
 		<Card.Title class="text-end">アカウント</Card.Title>
