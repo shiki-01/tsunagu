@@ -1,1 +1,4 @@
-// place files you want to import through the `$lib` alias in this folder.
+import type { UserInfo } from "firebase/auth";
+import { writable } from "svelte/store";
+
+export const authStore = writable({ loggedIn: false, user: null as UserInfo | null});
