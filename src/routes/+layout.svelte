@@ -1,29 +1,32 @@
 <script>
-    import '../app.css';
-    import { LayoutPanelLeft, TreeDeciduous, MessageCircle, Settings } from 'lucide-svelte';
-    import { page } from '$app/stores';
+	import '../app.css';
+	import { LayoutPanelLeft, TreeDeciduous, MessageCircle, Settings } from 'lucide-svelte';
+	import { page } from '$app/stores';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
-    let path;
-    $: path = $page.url.pathname.split('/').pop();
+	setupViewTransition();
+
+	let path;
+	$: path = $page.url.pathname.split('/').pop();
 </script>
 
-<header class="fixed bottom-0 left-0 w-full h-[80px] bg-primary">
-	<nav class="flex justify-around items-center h-full">
+<header class="fixed bottom-0 left-0 h-[80px] w-full bg-primary">
+	<nav class="flex h-full items-center justify-around">
 		<a href="/home" class="text-white {path === 'home' ? 'active' : ''}">
-			<LayoutPanelLeft class="w-8 h-8" />
+			<LayoutPanelLeft class="h-8 w-8" />
 		</a>
 		<a href="/tree" class="text-white {path === 'tree' ? 'active' : ''}">
-			<TreeDeciduous class="w-8 h-8" />
+			<TreeDeciduous class="h-8 w-8" />
 		</a>
 		<a href="/chat" class="text-white {path === 'chat' ? 'active' : ''}">
-			<MessageCircle class="w-8 h-8" />
+			<MessageCircle class="h-8 w-8" />
 		</a>
 		<a href="/settings" class="text-white {path === 'settings' ? 'active' : ''}">
-			<Settings class="w-8 h-8" />
+			<Settings class="h-8 w-8" />
 		</a>
 	</nav>
 </header>
-<main class="">
+<main class="p-5">
 	<slot />
 </main>
 
@@ -33,12 +36,12 @@
 	}
 
 	nav a {
-		@apply p-4 rounded-full shadow-lg;
+		@apply rounded-full p-4 shadow-lg;
 		transition: all 0.3s;
 	}
 
 	nav a.active {
-		@apply bg-white text-primary mb-16;
+		@apply mb-16 bg-white text-primary;
 	}
 
 	main {
